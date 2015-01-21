@@ -1,0 +1,32 @@
+\input{setup/preamble}
+
+\setbeamertemplate{section page}
+{
+	\thispagestyle{empty}
+	\frame{
+  \aauwavesbg
+  \finalpage{\insertsection\par}
+	}
+}
+\AtBeginSection{\sectionpage}
+
+\begin{document}
+
+\input{slides/formalities.tex}
+%\part{Introduction}
+\input{slides/Introduction.tex} %Josias
+
+\part{Analysis}
+\input{slides/theProblem.tex} %Carlé
+\input{slides/stateOfArt.tex} %Helsted
+
+\part{Product Development}
+\input{slides/algorithms.tex} %Heider
+\input{slides/Implementation.tex} %Fuglsang
+
+\input{slides/testing.tex} %Jens
+
+\input{slides/Demonstration.tex}
+\input{slides/Conclusion.tex}
+
+\end{document}
