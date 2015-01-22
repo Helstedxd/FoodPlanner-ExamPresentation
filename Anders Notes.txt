@@ -1,0 +1,10 @@
+In this semester we have worked whith the problem that is foodwaste and we have tried to create an software solution that will help reduce the amount of foodvaste in private homes.
+In this presentation we would like to trough 6 topics:
+*Problem Statement - In here the sources of which information have been gathreded from will be mentioned and the requiremnets for the system will be listed
+*XAML - The reasons for why WPF have been choosen wll be explained and some examples of how the XAML have been used will be shown
+*Code Exammples - The interesting code from the projetc will be presented
+*Unit Testing - Result from a unit test on the system
+*Usability Test - An summarizing and debate of the test will be made
+*Reflection - The thought on how the system and project could be improved will be presented in the this last topic
+
+We will start out with the Problem statement.
