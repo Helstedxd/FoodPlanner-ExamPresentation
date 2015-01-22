@@ -8,3 +8,11 @@ In this presentation we would like to trough 6 topics:
 *Reflection - The thought on how the system and project could be improved will be presented in the this last topic
 
 We will start out with the Problem statement.
+the problem statemens says "How can a software system assist the consumer in planning and managing a meal plan
+to minimize food waste and simultaneously be flexible enough to support their planning, shopping and cooking habits?"
+We have tried to create an software solutin which would solve or help to solve these problems
+-Planning and managing meals
+-Minimizing food waste
+While solving these problems we would like the solution to consider cooking cooking habbits in the form that users have different prefernces in form of taste and products they may or may not consume. 
+
+The greatest source of information in form of quality and volume(quantity?) have been from the interviews we conducted and the the reports we had collected. 
