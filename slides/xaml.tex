@@ -1,20 +1,22 @@
 \section{XAML} 
 \begin{frame}[fragile]{XAML}{Extensible Application Markup Language}
+  %XAML is used extensively in .NET Framework 3.0 \& .NET Framework 4.0 technologies, particularly in Windows Presentation Foundation (or WPF)
+  %Anything that is created or implemented in XAML can be expressed using a more traditional .NET language, such as C\# 
   \begin{itemize}
-  
-    \item{Things...}
+    \item .NET Framework
+    \item Windows Presentation Foundation (WPF)
+    \item XAML
     \begin{itemize}
-      \item Arguments ?
       \item Bindings
-      \item Styles and Templates
+      \item Styles \& Templates
       \item Commands
     \end{itemize}
-    
+    \item MVVM
   \end{itemize}
-% notes
- XAML is used extensively in .NET Framework 3.0 & .NET Framework 4.0 technologies, particularly in Windows Presentation Foundation (or WPF)
 
- Anything that is created or implemented in XAML can be expressed using a more traditional .NET language, such as C\# 
+
+  \includegraphics[width=\textwidth]{slides/mvvm.png}
+
 \end{frame}
 
 % Bindings to the viewmodel --------
@@ -22,7 +24,7 @@
 \subsection{ViewModel Bindings} 
 \begin{frame}[fragile]{XAML}{Properties in the ViewModel}
 
-\begin{lstlisting} %xaml
+\begin{lstlisting}
 <DatePicker SelectedDate="{Binding ActiveDate, Mode=TwoWay}" />
 \end{lstlisting}
 
@@ -49,15 +51,13 @@ public DateTime ActiveDate
 \subsection{Model Bindings} 
 \begin{frame}[fragile]{XAML}{Properties in the Model}
 
-\begin{lstlisting} %xaml
+\begin{lstlisting}
 <Image Height="100" Width="100" Source="{Binding Recipe.Image}"/>
-
 <Label Style="{StaticResource TextTitle}">
   <Label.Content>
-      <AccessText TextWrapping="Wrap" Text="{Binding Recipe.Title}"/>
+      <AccessText Text="{Binding Recipe.Title}"/>
   </Label.Content>
 </Label>
-
 <ScrollViewer>
   <TextBlock Text="{Binding Recipe.RecipesPreparation.Preparation}" TextWrapping="Wrap"/>
 </ScrollViewer>
@@ -70,9 +70,6 @@ public partial class Recipe
   public string Title { get; set; }
   public int Persons { get; set; }
   public string Image { get; set; }
-  public int PreparationID { get; set; }
-
-  public virtual ObservableCollection<Meal> Meals { get; set; }
   public virtual ObservableCollection<RecipeIngredient> RecipeIngredients { get; set; }
   public virtual RecipesPreparation RecipesPreparation { get; set; }
 }
@@ -83,9 +80,9 @@ public partial class Recipe
 
 % ------------------ Styles and termplates ---------------------
 \subsection{Styles and Templates} 
-\begin{frame}[fragile]{XAML}{Styles}
+\begin{frame}[fragile]{XAML}{Styles \& Templates}
 Styles
-\begin{lstlisting} %xaml
+\begin{lstlisting}
 <Style TargetType="{x:Type Control}" x:Key="TextTitle">
   <Setter Property="Foreground" Value="{StaticResource Text.Orange}"/>
   <Setter Property="FontSize" Value="14"/>
@@ -98,9 +95,9 @@ Styles
 
 \end{frame}
 
-\begin{frame}[fragile]{XAML}{Templates}
+\begin{frame}[fragile]{XAML}{Styles \& Templates}
 Templates
-\begin{lstlisting} %xaml
+\begin{lstlisting}
 <DataTemplate x:Key="ListRecipesTemplate">
   <Grid>
     <Border Name="ItemBorder" Margin="3" BorderBrush="{StaticResource Button.Static.Border}" BorderThickness="1">
@@ -120,9 +117,9 @@ Templates
 
 \subsection{Commands} 
 \begin{frame}[fragile]{XAML}{Navigation Commands}
-Hvad er commands...
+%Hvad er commands...
 
-\begin{lstlisting} %xaml
+\begin{lstlisting}
 <Button Command="{Binding RemoveMealCommand}" Visibility="{Binding isMealSet}" Style="{StaticResource ButtonIconTemplate}>
     <Button.Background>
       <ImageBrush ImageSource="../Images/minusIcon.png" Stretch="Uniform"/>
@@ -145,15 +142,20 @@ public ICommand RemoveMealCommand {
 
 % navigat-or/ion commands
 \begin{frame}[fragile]{XAML}{Commands}
+%Section of \textit{<DataTemplate x:Key="MealsListBoxTemplate">}
 \begin{lstlisting}
-public static ICommand GoToRecipeCommand
-{
-  get
-  {
-    if (_goToRecipeCommand == null)
-    {
-      _goToRecipeCommand = new RelayCommand<Recipe>(recipe =>
-      {
+  <i:Interaction.Triggers>
+    <i:EventTrigger EventName="MouseUp">
+      <i:InvokeCommandAction Command="{Binding Source={x:Static local:Navigator.GoToRecipeFromMealCommand}}" CommandParameter="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" />
+    </i:EventTrigger>
+  </i:Interaction.Triggers>
+\end{lstlisting}
+
+\begin{lstlisting}
+public static ICommand GoToRecipeCommand {
+  get {
+    if (_goToRecipeCommand == null) {
+      _goToRecipeCommand = new RelayCommand<Recipe>(recipe => {
         RecipeViewModel rvm = new RecipeViewModel(recipe);
         RecipePage rp = new RecipePage();
         rp.DataContext = rvm;
@@ -163,14 +165,5 @@ public static ICommand GoToRecipeCommand
     return _goToRecipeCommand;
   }
 }
-\end{lstlisting}
-
-\begin{lstlisting}
-  //inside of <DataTemplate x:Key="MealsListBoxTemplate"> template snak.
-  <i:Interaction.Triggers>
-    <i:EventTrigger EventName="MouseUp">
-      <i:InvokeCommandAction Command="{Binding Source={x:Static local:Navigator.GoToRecipeFromMealCommand}}" CommandParameter="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" />
-    </i:EventTrigger>
-  </i:Interaction.Triggers>
 \end{lstlisting}
 \end{frame}
