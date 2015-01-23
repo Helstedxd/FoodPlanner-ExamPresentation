@@ -1,17 +1,22 @@
 \input{setup/preamble}
 
-\setbeamertemplate{section page}
-{
-	\thispagestyle{empty}
-	\frame{
-  \aauwavesbg
-  \finalpage{\insertsection\par}
-	}
-}
-\AtBeginSection{\sectionpage}
-
 \begin{document}
 
+{\aauwavesbg%
+\begin{frame}[plain,noframenumbering]
+  \titlepage
+\end{frame}}
+
+\begin{frame}{Agenda}{}
+\tableofcontents
+\end{frame}
+
 \input{slides/example.tex}
+\input{slides/xaml.tex}
+
+{\aauwavesbg
+\begin{frame}[plain,noframenumbering]
+  \finalpage{Thank you for using this theme!}
+\end{frame}}
 
 \end{document}

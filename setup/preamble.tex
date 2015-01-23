@@ -1,4 +1,3 @@
-
 \documentclass[10pt, t]{beamer}
 \usetheme[left]{AAUsidebar}
 
@@ -6,94 +5,69 @@
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{helvet}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-\usepackage{listings}
+
 \usepackage{color}
-\usepackage{epstopdf}
+\definecolor{blue}{rgb}{0.13,0.13,1}
+\definecolor{green}{rgb}{0,0.5,0}
+\definecolor{red}{rgb}{0.9,0,0}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
 
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
-\definecolor{greencomments}{rgb}{0,0.5,0}
-\definecolor{redstrings}{rgb}{0.9,0,0}
-
-\setbeamertemplate{part page}
-{
-  \aauwavesbg
-	\finalpage{\insertpart\par}
-}
-	
-	\lstdefinestyle{customc}{
-  belowcaptionskip=1\baselineskip,
-  %breaklines=true,
+\usepackage{listings}
+\lstset{
+  language=[Sharp]C,
   frame=single,
-  xleftmargin=\parindent,
-  language=C,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
   showstringspaces=false,
-  keywordstyle=\color{bluekeywords},
-	keywordstyle=[2]\color{cyan},
-	keywordstyle=[3]\color{cyan},
-  commentstyle=\itshape\color{dkgreen},
-  %identifierstyle=\color{dkgreen},
-	columns=flexible,
-  stringstyle=\color{redstrings},
-	morekeywords={foreach, bool, List, public, in, false, true},
-	morekeywords=[2]{TaskInstance, Task, Team},
-	keepspaces,
-	literate={=}{{{\color{magenta}=}}}1 {*}{{{\color{magenta}*}}}1 {+}{{{\color{magenta}+}}}1 {-}{{{\color{magenta}-}}}1 {!}{{{\color{magenta}!}}}1 {<}{{{\color{magenta}<}}}1 {>}{{{\color{magenta}>}}}1 {/}{{{\color{magenta}/}}}1 {\{}{{{\color{black}\{}}}1 {\}}{{{\color{black}\}}}}1 {(}{{{\color{black}(}}}1 {)}{{{\color{black})}}}1 {[}{{{\color{black}[}}}1 {]}{{{\color{black}]}}}1 {.}{{{\color{black}.}}}1 {,}{{{\color{black},}}}1 {;}{{{\color{black};}}}1
+  breakatwhitespace=true,
+  escapeinside={(*@}{@*)},
+  commentstyle=\color{green},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{red},
+  basicstyle=\fontsize{8pt}{8pt}\ttfamily,
+  morekeywords={get,set}
 }
 
-\lstdefinestyle{nonumbers}
-{
-    numbers=none,
+\newcommand{\chref}[2]{%
+  \href{#1}{{\usebeamercolor[bg]{AAUsidebar}#2}}%
 }
 
-\lstdefinestyle{small}
-{
-    numbers=none,
-    basicstyle={\fontsize{10pt}{10pt}\ttfamily}
-}
-
-\newcommand{\chref}[2]{
-    \href{#1}{{\usebeamercolor[bg]{AAUsidebar}#2}}
-}
 \title[Food Planner]{P3: Food Planner}
 \subtitle{A Software Analysis and -Implementation}
 \date{28/01-2015}
 \author[DS301E14] 
 {
-    Mathias Vestergaard Rasmussen
-    \href{mailto:mvra13@student.aau.dk}{\textit{<mvra13@student.aau.dk>}}\linebreak
-		Christoffer Carlé Christensen
-    \href{mailto:ccch13@student.aau.dk}{\textit{<ccch13@student.aau.dk>}}\linebreak
-		Kasper Østergaard Helsted
-    \href{mailto:khelst13@student.aau.dk}{\textit{<khelst13@student.aau.dk>}}\linebreak
-		Anders Lykke Matthiassen
-    \href{mailto:amatt13@student.aau.dk}{\textit{<amatt13@student.aau.dk>}}\linebreak
-		Christian Stephansen
-    \href{mailto:csteph13@student.aau.dk}{\textit{<csteph13@student.aau.dk>}}\linebreak
-    Gideon Blegmand
-    \href{mailto:gblegm13@student.aau.dk}{\textit{<gblegm13@student.aau.dk>}}\linebreak
+  Mathias Vestergaard Rasmussen
+  \href{mailto:mvra13@student.aau.dk}{\textit{<mvra13@student.aau.dk>}}\linebreak
+  Christoffer Carlé Christensen
+  \href{mailto:ccch13@student.aau.dk}{\textit{<ccch13@student.aau.dk>}}\linebreak
+  Kasper Østergaard Helsted
+  \href{mailto:khelst13@student.aau.dk}{\textit{<khelst13@student.aau.dk>}}\linebreak
+  Anders Lykke Matthiassen
+  \href{mailto:amatt13@student.aau.dk}{\textit{<amatt13@student.aau.dk>}}\linebreak
+  Christian Stephansen
+  \href{mailto:csteph13@student.aau.dk}{\textit{<csteph13@student.aau.dk>}}\linebreak
+  Gideon Blegmand
+  \href{mailto:gblegm13@student.aau.dk}{\textit{<gblegm13@student.aau.dk>}}
 }
 
 \institute[
-    Department of Computer Science\linebreak
-    Selma Lagerlöfs Vej 300\linebreak
-    DK-9220 Aalborg Ø\linebreak
-    http://cs.aau.dk
+  Department of Computer Science\linebreak
+  Selma Lagerlöfs Vej 300\linebreak
+  DK-9220 Aalborg Ø\linebreak
+  http://cs.aau.dk
 ]
 {
-    Department of Computer Science\linebreak
-    Selma Lagerlöfs Vej 300\linebreak
-    DK-9220 Aalborg Ø\linebreak
-    http://cs.aau.dk/
-    
+  Department of Computer Science\linebreak
+  Selma Lagerlöfs Vej 300\linebreak
+  DK-9220 Aalborg Ø\linebreak
+  http://cs.aau.dk/
+
 }
 
 \pgfdeclareimage[height=1.5cm]{titlepagelogo}{AAUgraphics/aau_logo_new}
 \titlegraphic{  
-    \pgfuseimage{titlepagelogo}
+  \pgfuseimage{titlepagelogo}
 }
