@@ -1,14 +1,14 @@
-\frametitle{CheckForLoop}
-\fontsize{8pt}{7}\selectfont
-\begin{lstlisting}{style=customc}
-public bool CheckForLoop(Task inputTask, Task checkTask) {
-  foreach(Task t in inputTask.Dependencies) {
-    if(t == checkTask) {
-      return true;
-    } else {
-      return CheckForLoop(t, checkTask);
-    }
-  }
-  return false;
+\frametitle{Unit testing}\framesubtitle {Code from InventoryIngredientTests.cs}
+\begin{lstlisting}
+[TestMethod]
+public void PurchaseDate_AutoSetConstructor_SetToNow() {
+//arrange
+Ingredient testIngredient = new Ingredient();
+DateTime expectedPurchaseDate = DateTime.Now;
+
+//act - The property is set automaticly in the constructor
+InventoryIngredient testInventoryIngredient = new InventoryIngredient(testIngredient, 750);
+//assert
+Assert.AreEqual(expectedPurchaseDate, testInventoryIngredient.PurchaseDate);
 }
 \end{lstlisting}

@@ -1,11 +1,11 @@
 \section{Quality Assurance}
 
-\begin{frame} {Fulfilling the semester description}
+\begin{frame}[fragile] {Quality assurance} {Fulfilling the semester description}
 	\begin{itemize}
-		\item Quality assurance (in terms of program testing and results and usability evaluation and results), including arguments for coverage and validity. {\footnotesize (Semester description)}
+		\item Quality assurance (in terms of program testing and results and usability evaluation and results), including arguments for coverage and validity {\footnotesize (Semester description)}
 		\begin{itemize}
-			\item Program testing = Unit testing.
-			\item Usability evaluation = IDA (report section 11).
+			\item Program testing = Unit testing
+			\item Usability evaluation = IDA (report section 11)
 		\end{itemize}				
 	\end{itemize}
 
@@ -13,22 +13,61 @@
 
 \section{Unit Testing}
 
-\begin{frame} {What is unit testing?}
+\begin{frame}[fragile] {Unit testing} {What is unit testing?}
 	\begin{itemize}
-		\item Initial stage of program testing.
-		\item Isolate smallest testable code.
-		\item Confirm if the unit behaves correctly.
+		\item Initial stage of program testing
+		\item Isolate smallest testable code
+		\item Confirm if the unit behaves correctly
 	\end{itemize}
 \end{frame}
 
-\begin{frame} {Possible candidates for unit testing}
+\begin{frame}[fragile] {Unit testing} {Possible candidates for unit testing}
 
 	\begin{itemize}
 		\item Classes e.g. User, Ingredient or Recipe
 			\begin{itemize}
 				\item Testing their properties or methods
-			\end{itemize}					
-		\item Methods e.g. search algorithm (Integration test)
+			\end{itemize}
+		\item List of candidates	
+			\begin{itemize}	
+				\item MODELS								
+				\item Graylist
+				\item Ingredient
+				\item InventoryIngredient*
+				\item InventoryListCombinedByQuantity
+				\item LastMeal
+				\item PublicQuerys
+				\item Recipe
+				\item RecipeIngredient
+				\item SearchResults
+				\item ShoppingClass
+				\item ShoppingListIngredient
+				\item User	
+				\item VIEWMODELS
+				\item InventoryViewModel*
+				\item MealPlanViewModel
+				\item RecipeSearchViewModel
+				\item RecipeViewModel
+				\item SettingsViewModel
+				\item ShoppingListViewModel				
+			\end{itemize}										
+		%\item Methods e.g. search algorithm (Integration test)
 	\end{itemize}
+		
+\end{frame}
 
+\begin{frame}[fragile] {Unit testing} {Code from InventoryIngredientTests.cs}
+	\begin{lstlisting}
+		[TestMethod]
+		public void PurchaseDate_AutoSetConstructor_SetToNow() {
+			//arrange
+			Ingredient testIngredient = new Ingredient();
+			DateTime expectedPurchaseDate = DateTime.Now;
+			
+			//act - The property is set automaticly in the constructor
+			InventoryIngredient testInventoryIngredient = new InventoryIngredient(testIngredient, 750);
+			//assert
+			Assert.AreEqual(expectedPurchaseDate, testInventoryIngredient.PurchaseDate); 
+		}
+	\end{lstlisting}
 \end{frame}
