@@ -13,6 +13,27 @@ to minimize food waste and simultaneously be flexible enough to support their pl
 We have tried to create an software solutin which would solve or help to solve these problems
 -Planning and managing meals
 -Minimizing food waste
-While solving these problems we would like the solution to consider cooking cooking habbits in the form that users have different prefernces in form of taste and products they may or may not consume. 
+While solving these problems we would like the solution to consider cooking habbits in the form that users have different prefernces in form of taste and products they may or may not consume. 
 
-The greatest source of information in form of quality and volume(quantity?) have been from the interviews we conducted and the the reports we had collected. 
+The greatest source of information in form of quality and volume(quantity?) have been from the interviews we conducted and the the reports we had collected. THe questions used in the interview was structured which allowed us to get data that was comparable. There was another set of intervies which we used, but these were not conducted by ourselves. They were found in the other reports we used.
+
+
+
+After we finished the projects, 3 errors have been found in the program. 2 of them are related to miscalculations when the program has to work with quanities of food items. 
+
+1. The method removePassedMeals will remove ingredients from the inventory when the meal is schedueled to the day prior to the current date, as to simulate the meal being cooked and thefore the ingredients that te recipe needs, have been used. The needed ingredients from a recipe will be multiplied if more people are dinning together and this is taken into consideration when the shopping list i screated. But when the ingredients are removed from the inventory this information is not taken into account which means that the ingredients removed is not represental of the ingridients used.
+
+2.
+
+
+helstedxd 
+17:33:24 
+PublicQuerys.cs http://puu.sh/f0Gud/9c9c8f3d67.png Problem: Ligesom den føste kode tager denne del ikke højde for antal person er i hustanden når den sortere, den tager udgangspunkt i 1 opskrift
+
+3. When the program loads the mealplan where the user can see the sceduled meals, all meals in the database is loaded for the week the user is currently looking at. This means that if a user logs in on another account he/she will still see the same meals. This can be corrected by only showing meals releavnt to the currently logged in user.
+
+
+
+helstedxd 
+17:23:45 
+MealPlanViewModel.cs http://puu.sh/f0Ff3/dfa5d003b7.png Problem: Koden tager ikke højde for hvilken person der er logget ind i programmet, og dermed loader ALLE Meals, uanset hvem der har lagt dem ind
