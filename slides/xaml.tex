@@ -15,12 +15,11 @@
   \end{itemize}
 
 
-  \includegraphics[width=\textwidth]{slides/mvvm.png}
+  \includegraphics[width=\textwidth]{graphics/mvvm.png}
 
 \end{frame}
 
-% Bindings to the viewmodel --------
-
+% --------------------------------------------------------------
 \subsection{ViewModel Bindings} 
 \begin{frame}[fragile]{XAML}{Properties in the ViewModel}
 
@@ -46,8 +45,7 @@ public DateTime ActiveDate
 
 \end{frame}
 
-% BInding to the model ---------------
-
+% --------------------------------------------------------------
 \subsection{Model Bindings} 
 \begin{frame}[fragile]{XAML}{Properties in the Model}
 
@@ -78,7 +76,7 @@ public partial class Recipe
 \end{frame}
 
 
-% ------------------ Styles and termplates ---------------------
+% --------------------------------------------------------------
 \subsection{Styles and Templates} 
 \begin{frame}[fragile]{XAML}{Styles \& Templates}
 Styles
@@ -93,6 +91,11 @@ Styles
 </Style>
 \end{lstlisting}
 
+\end{frame}
+
+\begin{frame}[fragile]{XAML}{Styles \& Templates}
+  Recipe search page
+  \includegraphics[width=.75\textwidth]{graphics/recipe-search-item.png}
 \end{frame}
 
 \begin{frame}[fragile]{XAML}{Styles \& Templates}
@@ -112,13 +115,11 @@ Templates
 \end{lstlisting}
 \end{frame}
 
-
-% --------------- COMMANDS ------------
-
+% --------------------------------------------------------------
 \subsection{Commands} 
-\begin{frame}[fragile]{XAML}{Navigation Commands}
-%Hvad er commands...
+\begin{frame}[fragile]{XAML}{Commands}
 
+Recipe page
 \begin{lstlisting}
 <Button Command="{Binding RemoveMealCommand}" Visibility="{Binding isMealSet}" Style="{StaticResource ButtonIconTemplate}>
     <Button.Background>
@@ -139,9 +140,8 @@ public ICommand RemoveMealCommand {
 \end{lstlisting}
 \end{frame}
 
-
-% navigat-or/ion commands
-\begin{frame}[fragile]{XAML}{Commands}
+% --------------------------------------------------------------
+\begin{frame}[fragile]{XAML}{Navigation Commands}
 %Section of \textit{<DataTemplate x:Key="MealsListBoxTemplate">}
 \begin{lstlisting}
   <i:Interaction.Triggers>
