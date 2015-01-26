@@ -16,34 +16,26 @@
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 
-\lstset{frame=tb,
-  language=C,
-  numbers=left,
-  numberstyle=\footnotesize,
-  stepnumber=1,
-  numbersep=5pt,
+\definecolor{blue}{rgb}{0.13,0.13,1}
+\definecolor{green}{rgb}{0,0.5,0}
+\definecolor{red}{rgb}{0.9,0,0}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+
+\lstset{
+  language=[Sharp]C,
+  frame=single,
   showspaces=false,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle=\ttfamily,
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
+  showtabs=false,
   breaklines=true,
+  showstringspaces=false,
   breakatwhitespace=true,
-  tabsize=3,
-  captionpos=b  
-  }
-
-\lstdefinestyle{nonumbers}
-{
-    numbers=none,
-}
-
-\lstdefinestyle{small}
-{
-    numbers=none,
-    basicstyle={\fontsize{10pt}{10pt}\ttfamily}
+  escapeinside={(*@}{@*)},
+  commentstyle=\color{green},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{red},
+  basicstyle=\fontsize{8pt}{8pt}\ttfamily,
+  morekeywords={get,set}
 }
 
 \newcommand{\chref}[2]{
@@ -88,3 +80,12 @@
     \pgfuseimage{titlepagelogo}
 }
 
+\setbeamertemplate{section page}
+{
+  \thispagestyle{empty}
+  \frame{
+  \aauwavesbg
+  \finalpage{\insertsection\par}
+  }
+}
+\AtBeginSection{\sectionpage}
