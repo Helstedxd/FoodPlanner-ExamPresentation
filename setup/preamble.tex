@@ -11,40 +11,29 @@
 \usetikzlibrary{shapes.geometric, arrows}
 \usepackage{listings}
 \usepackage{color}
-\usepackage{epstopdf}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
-\definecolor{greencomments}{rgb}{0,0.5,0}
-\definecolor{redstrings}{rgb}{0.9,0,0}
 
-\setbeamertemplate{part page}
-{
-  \aauwavesbg
-	\finalpage{\insertpart\par}
-}
-	
-	\lstdefinestyle{customc}{
-  belowcaptionskip=1\baselineskip,
-  %breaklines=true,
-  frame=single,
-  xleftmargin=\parindent,
+\lstset{frame=tb,
   language=C,
+  numbers=left,
+  numberstyle=\footnotesize,
+  stepnumber=1,
+  numbersep=5pt,
+  showspaces=false,
   showstringspaces=false,
-  keywordstyle=\color{bluekeywords},
-	keywordstyle=[2]\color{cyan},
-	keywordstyle=[3]\color{cyan},
-  commentstyle=\itshape\color{dkgreen},
-  %identifierstyle=\color{dkgreen},
-	columns=flexible,
-  stringstyle=\color{redstrings},
-	morekeywords={foreach, bool, List, public, in, false, true},
-	morekeywords=[2]{TaskInstance, Task, Team},
-	keepspaces,
-	literate={=}{{{\color{magenta}=}}}1 {*}{{{\color{magenta}*}}}1 {+}{{{\color{magenta}+}}}1 {-}{{{\color{magenta}-}}}1 {!}{{{\color{magenta}!}}}1 {<}{{{\color{magenta}<}}}1 {>}{{{\color{magenta}>}}}1 {/}{{{\color{magenta}/}}}1 {\{}{{{\color{black}\{}}}1 {\}}{{{\color{black}\}}}}1 {(}{{{\color{black}(}}}1 {)}{{{\color{black})}}}1 {[}{{{\color{black}[}}}1 {]}{{{\color{black}]}}}1 {.}{{{\color{black}.}}}1 {,}{{{\color{black},}}}1 {;}{{{\color{black};}}}1
-}
+  columns=flexible,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  captionpos=b  
+  }
 
 \lstdefinestyle{nonumbers}
 {
@@ -60,6 +49,7 @@
 \newcommand{\chref}[2]{
     \href{#1}{{\usebeamercolor[bg]{AAUsidebar}#2}}
 }
+
 \title[Food Planner]{P3: Food Planner}
 \subtitle{A Software Analysis and -Implementation}
 \date{28/01-2015}
@@ -67,13 +57,13 @@
 {
     Mathias Vestergaard Rasmussen
     \href{mailto:mvra13@student.aau.dk}{\textit{<mvra13@student.aau.dk>}}\linebreak
-		Christoffer Carlé Christensen
+    Christoffer Carlé Christensen
     \href{mailto:ccch13@student.aau.dk}{\textit{<ccch13@student.aau.dk>}}\linebreak
-		Kasper Østergaard Helsted
+    Kasper Østergaard Helsted
     \href{mailto:khelst13@student.aau.dk}{\textit{<khelst13@student.aau.dk>}}\linebreak
-		Anders Lykke Matthiassen
+    Anders Lykke Matthiassen
     \href{mailto:amatt13@student.aau.dk}{\textit{<amatt13@student.aau.dk>}}\linebreak
-		Christian Stephansen
+    Christian Stephansen
     \href{mailto:csteph13@student.aau.dk}{\textit{<csteph13@student.aau.dk>}}\linebreak
     Gideon Blegmand
     \href{mailto:gblegm13@student.aau.dk}{\textit{<gblegm13@student.aau.dk>}}\linebreak
@@ -82,18 +72,19 @@
 \institute[
     Department of Computer Science\linebreak
     Selma Lagerlöfs Vej 300\linebreak
-    DK-9220 Aalborg East\linebreak
+    DK-9220 Aalborg Ø\linebreak
     http://cs.aau.dk
 ]
 {
     Department of Computer Science\linebreak
     Selma Lagerlöfs Vej 300\linebreak
-    DK-9220 Aalborg East\linebreak
+    DK-9220 Aalborg Ø\linebreak
     http://cs.aau.dk/
     
 }
 
 \pgfdeclareimage[height=1.5cm]{titlepagelogo}{AAUgraphics/aau_logo_new}
-\titlegraphic{  
+\titlegraphic{
     \pgfuseimage{titlepagelogo}
 }
+
