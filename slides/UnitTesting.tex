@@ -28,35 +28,30 @@
 			\begin{itemize}
 				\item Testing their properties or methods
 			\end{itemize}
-		\item List of candidates	
-			\begin{itemize}	
-				\item MODELS								
-				\item Graylist
-				\item Ingredient
-				\item InventoryIngredient*
-				\item InventoryListCombinedByQuantity
-				\item LastMeal
-				\item PublicQuerys
-				\item Recipe
-				\item RecipeIngredient
-				\item SearchResults
-				\item ShoppingClass
-				\item ShoppingListIngredient
-				\item User	
-				\item VIEWMODELS
-				\item InventoryViewModel*
-				\item MealPlanViewModel
-				\item RecipeSearchViewModel
-				\item RecipeViewModel
-				\item SettingsViewModel
-				\item ShoppingListViewModel				
-			\end{itemize}										
-		%\item Methods e.g. search algorithm (Integration test)
+		\item List of candidates	 	
+				{\small
+				\begin{tabular} {l r}
+							\textbf{Models} & \textbf{ViewModels} \\
+							Graylist & InventoryViewModel* \\
+							Ingredient & MealPlanViewModel \\
+							InventoryIngredient* & RecipeSearchViewModel \\
+							InventoryListCombinedByQuantity & RecipeViewModel \\
+							LastMeal & SettingsViewModel \\
+							PublicQuerys & ShoppingListViewModel \\
+							Recipe \\
+							RecipeIngredient \\
+							SearchResults \\
+							ShoppingClass \\
+							ShoppingListIngredient \\
+							User
+				\end{tabular}
+				}					
 	\end{itemize}
 		
 \end{frame}
 
 \begin{frame}[fragile] {Unit testing} {Code from InventoryIngredientTests.cs}
+	{\small	
 	\begin{lstlisting}
 		[TestMethod]
 		public void PurchaseDate_AutoSetConstructor_SetToNow() {
@@ -70,4 +65,5 @@
 			Assert.AreEqual(expectedPurchaseDate, testInventoryIngredient.PurchaseDate); 
 		}
 	\end{lstlisting}
+	}
 \end{frame}

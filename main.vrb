@@ -1,4 +1,5 @@
 \frametitle{Unit testing}\framesubtitle {Code from InventoryIngredientTests.cs}
+{\small
 \begin{lstlisting}
 [TestMethod]
 public void PurchaseDate_AutoSetConstructor_SetToNow() {
@@ -12,3 +13,4 @@ InventoryIngredient testInventoryIngredient = new InventoryIngredient(testIngred
 Assert.AreEqual(expectedPurchaseDate, testInventoryIngredient.PurchaseDate);
 }
 \end{lstlisting}
+}
