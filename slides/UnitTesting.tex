@@ -72,7 +72,8 @@ public void PurchaseDate_AutoSetConstructor_SetToNow() {
 
 \begin{lstlisting} []
 [TestMethod]
-public void AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
+public void
+AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
   //arrange
   Ingredient expectedNewIngredient = new Ingredient();
   InventoryIngredient inventoryIngredient = new InventoryIngredient (expectedNewIngredient, 1);
@@ -80,13 +81,15 @@ public void AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
   bool ingredientAdded;
   
   //act
-  inventoryViewModel.AddIngredientToInventory(expectedNewIngredient, 1);
+  inventoryViewModel
+    .AddIngredientToInventory(expectedNewIngredient, 1);
   
-  if (FoodPlanner.App.CurrentUser.InventoryIngredients.Contains(InventoryIngredient)) {
+  if (FoodPlanner.App.CurrentUser
+      .InventoryIngredients.Contains(InventoryIngredient)) {
     ingredientAdded = true;
-    } else {
-      ingredientAdded
-    }
+  } else {
+    ingredientAdded
+  }
     
   //assert
   Assert.IsTrue(ingredientAdded);

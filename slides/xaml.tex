@@ -144,11 +144,11 @@ public ICommand RemoveMealCommand {
 \begin{frame}[fragile]{XAML}{Navigation Commands}
 %Section of \textit{<DataTemplate x:Key="MealsListBoxTemplate">}
 \begin{lstlisting}
-  <i:Interaction.Triggers>
-    <i:EventTrigger EventName="MouseUp">
-      <i:InvokeCommandAction Command="{Binding Source={x:Static local:Navigator.GoToRecipeFromMealCommand}}" CommandParameter="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" />
-    </i:EventTrigger>
-  </i:Interaction.Triggers>
+<i:Interaction.Triggers>
+  <i:EventTrigger EventName="MouseUp">
+    <i:InvokeCommandAction Command="{Binding Source={x:Static local:Navigator.GoToRecipeFromMealCommand}}" CommandParameter="{Binding Content, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}" />
+  </i:EventTrigger>
+</i:Interaction.Triggers>
 \end{lstlisting}
 
 \begin{lstlisting}
