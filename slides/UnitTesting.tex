@@ -78,7 +78,7 @@ AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
   Ingredient expectedNewIngredient = new Ingredient();
   InventoryIngredient inventoryIngredient = new InventoryIngredient (expectedNewIngredient, 1);
   InventoryViewModel inventoryViewModel = new InventoryViewModel();
-  bool ingredientAdded;
+  bool ingredientAdded = false;
   
   //act
   inventoryViewModel
@@ -87,8 +87,6 @@ AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
   if (FoodPlanner.App.CurrentUser
       .InventoryIngredients.Contains(InventoryIngredient)) {
     ingredientAdded = true;
-  } else {
-    ingredientAdded
   }
     
   //assert
