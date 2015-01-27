@@ -2,28 +2,27 @@ In this semester we have worked whith the problem that is foodwaste and we have 
 In this presentation we would like to trough these topics:
 *Problem Statement - In here the sources of which information have been gathreded from will be mentioned and the requiremnets for the system will be listed
 *XAML - The reasons for why WPF have been choosen wll be explained and some examples of how the XAML have been used will be shown
-*Code Exammples - Some interesting code from the projetc will be presented
+*Code Exammples - Some specific code from the solution will be presented
 *Quality Assurance - Result from a unit test on the system, and a discusion of the usability test will be made
 *Reflection - The thought on how the system and project could be improved will be presented in the this last topic
 
 Tag navne med når emner bliver præsenteret
 
 We will start out with the Problem statement.
-The problem statemens says "How can a software system assist the consumer in planning and managing a meal plan to minimize food waste and simultaneously be flexible enough to support their planning, shopping and cooking habits?"
+The problem statemens says "How can a software system assist the consumer in planning and managing a meal plan to minimize food waste?"
 We have tried to create an software solutin which would solve or help to solve these problems
 -Planning and managing meals
 -Minimizing food waste
 While solving these problems we would like the solution to consider cooking habbits in the form that users have different prefernces in form of taste and products they may or may not consume. 
 
-LAv en forkortet udgave af statementet som du siger
 
-The most creditable source of information have been from the interviews we conducted and the the reports we had collected. The questions used in the interview was structured which allowed us to get data that was comparable. There was another set of intervies which we used, but these were not conducted by ourselves. They were found in the other reports we used. The results were somewha similar.
+The most creditable source of information have been from the interviews we conducted and the the reports we had collected. The questions used in the interview was structured which allowed us to get data that was comparable. There was another set of intervies which we used, but these were not conducted by ourselves. They were found in the other reports we used. The results from tthe two sets of interviews were somewhat similar.
 
 
-Præsenter den nøste der kommer op (Mathias XAML)
+Præsenter den næste der kommer op (Mathias XAML)
 -------------------------------
 
-After we finished the projects, 4 errors have been found in the program. 2 of them are related to miscalculations when the program has to work with quanities of food items. 
+After we finished the projects, some errors have been found in the program. 2 of them are related to miscalculations when the program has to work with quanities of food items. 
 
 1. The method removePassedMeals will remove ingredients from the inventory when the meal is schedueled to the day prior to the current date, as to simulate the meal being cooked and thefore the ingredients that te recipe needs, have been used. The needed ingredients from a recipe will be multiplied if more people are dinning together and this is taken into consideration when the shopping list i screated. But when the ingredients are removed from the inventory this information is not taken into account which means that the ingredients removed is not represental of the ingridients used.
 
@@ -33,5 +32,5 @@ After we finished the projects, 4 errors have been found in the program. 2 of th
 3. If a user wants to rate an ingredient in order to priotze the ingridient when meals are reccomended or when search is iniated, the uer can do so trough the settigs menu. However due to errors in the nameing inside the program the rating value is not saved and represented with digits, which is not supposed to be the case. This is a flat out bug in the program.
 
 
-Missing feauteres
+Missing feauteres - at last we have discovered a missing feautere in the program
 1. When the program loads the mealplan where the user can see the sceduled meals, all meals in the database is loaded for the week the user is currently looking at. This means that if a user logs in on another account he/she will still see the same meals. This can be corrected by only showing meals releavnt to the currently logged in user.
