@@ -1,19 +1,19 @@
 \section{Quality Assurance}
 
-\begin{frame}[fragile] {Quality assurance} {Fulfilling the semester description}
+\begin{frame}[fragile] {Quality Assurance} {Fulfilling the semester description}
 	\begin{itemize}
 		\item Quality assurance (in terms of program testing and results and usability evaluation and results), including arguments for coverage and validity {\footnotesize (Semester description)}
 		\begin{itemize}
 			\item Program testing = Unit testing
-			\item Usability evaluation = IDA (report section 11)
+			\item Usability evaluation = Instant Data Analysis (report chapter 11)
 		\end{itemize}				
 	\end{itemize}
 
 \end{frame}
 
-\section{Unit Testing}
+\subsection{Unit Testing}
 
-\begin{frame}[fragile] {Unit testing} {What is unit testing?}
+\begin{frame}[fragile] {Unit Testing} {What is unit testing?}
 	\begin{itemize}
 		\item Initial stage of program testing
 		\item Isolate smallest testable code
@@ -21,7 +21,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile] {Unit testing} {Possible candidates for unit testing}
+\begin{frame}[fragile] {Unit Testing} {Possible candidates for unit testing}
 
 	\begin{itemize}
 		\item Classes e.g. User, Ingredient or Recipe
@@ -32,9 +32,9 @@
 				{\small
 				\begin{tabular} {l r}
 							\textbf{Models} & \textbf{ViewModels} \\
-							Graylist & InventoryViewModel* \\
+							Graylist & {\color{blue} InventoryViewModel} \\
 							Ingredient & MealPlanViewModel \\
-							InventoryIngredient* & RecipeSearchViewModel \\
+							{\color{blue}InventoryIngredient} & RecipeSearchViewModel \\
 							InventoryListCombinedByQuantity & RecipeViewModel \\
 							LastMeal & SettingsViewModel \\
 							PublicQuerys & ShoppingListViewModel \\
@@ -50,20 +50,51 @@
 		
 \end{frame}
 
-\begin{frame}[fragile] {Unit testing} {Code from InventoryIngredientTests.cs}
-	{\small	
-	\begin{lstlisting}
-		[TestMethod]
-		public void PurchaseDate_AutoSetConstructor_SetToNow() {
-			//arrange
-			Ingredient testIngredient = new Ingredient();
-			DateTime expectedPurchaseDate = DateTime.Now;
-			
-			//act - The property is set automaticly in the constructor
-			InventoryIngredient testInventoryIngredient = new InventoryIngredient(testIngredient, 750);
-			//assert
-			Assert.AreEqual(expectedPurchaseDate, testInventoryIngredient.PurchaseDate); 
-		}
-	\end{lstlisting}
-	}
+\begin{frame}[fragile] {Unit Testing} {Code from InventoryIngredientTests.cs}
+		
+\begin{lstlisting}
+[TestMethod]
+public void PurchaseDate_AutoSetConstructor_SetToNow() {
+  //arrange
+  Ingredient testIngredient = new Ingredient();
+  DateTime expectedPurchaseDate = DateTime.Now;
+
+  //act - The property is set automaticly in the constructor
+  InventoryIngredient testInventoryIngredient = new InventoryIngredient(testIngredient, 750);
+  //assert
+  Assert.AreEqual(expectedPurchaseDate, testInventoryIngredient.PurchaseDate); 
+}
+\end{lstlisting}
+	
+\end{frame}
+
+\begin{frame} [fragile] {Unit Testing} {Code from InventoryViewModelTests.cs}
+
+\begin{lstlisting} []
+[TestMethod]
+public void AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
+  //arrange
+  Ingredient expectedNewIngredient = new Ingredient();
+  InventoryIngredient InventoryIngredient = new InventoryIngredient(expectedNewIngredient, 1);
+  InventoryViewModel inventoryViewModel = new InventoryViewModel();
+  bool ingredientAdded;
+  
+  //act
+  {\color {red} inventoryViewModel.AddIngredientToInventory(expectedNewIngredient, 1);}
+  
+  if (FoodPlanner.App.CurrentUser.InventoryIngredients.Contains(inventoryIngredient)) {
+    ingredientAdded = true;
+  } else  {
+    ingredientAdded = false;
+  }
+  
+  //assert
+  Assert.IsTrue(ingredientAdded);
+}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame} {Unit Testing} {Dependency injection}
+
 \end{frame}
