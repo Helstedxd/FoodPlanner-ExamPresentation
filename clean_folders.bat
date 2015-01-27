@@ -25,6 +25,7 @@ del /s *.xml
 del /s *.nav
 del /s *.snm
 del /s *.snm
+del /s *.vrb
 del /s links
 del /s Makefile
 del /s main-blx.*

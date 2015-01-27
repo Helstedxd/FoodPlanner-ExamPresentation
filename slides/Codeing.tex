@@ -1,5 +1,6 @@
 \section{Code Examples}
 
+\subsection{Sorting}
 \begin{frame}{Sorting}
     \begin{columns}
     \column{0.7\textwidth}
@@ -19,6 +20,7 @@
 
 \end{frame}
 
+\subsection{PublicQuerys}
 \begin{frame}{PublicQuerys}
     \begin{itemize}
         \item IQueryable<inventoryListGroupedByQuantity> inventoryIQueryable
@@ -29,24 +31,98 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Search by recipes}
-    \begin{figure}
-        \centering
-        \includegraphics[width=\textwidth]{Grafik/search}
-    \end{figure}
+%\begin{frame}{Search by recipes}
+    %\begin{figure}
+        %\centering
+        %\includegraphics[width=\textwidth]{Grafik/search}
+    %\end{figure}
+%\end{frame}
+
+\subsection{Sorting Of Results}
+\begin{frame}[fragile]{Sorting Of Results}{Initialize result}
+\begin{lstlisting}
+ObservableCollection<SearchResults> result = new ObservableCollection<SearchResults>();
+
+foreach (IGrouping<int, Result> ri in userInput)
+{
+    Recipe recipe = ri.FirstOrDefault().recipe;
+
+    SearchResults searchResult = new SearchResults(recipe);
+\end{lstlisting}
 \end{frame}
 
-\begin{frame}{Sorting of results}
-    \begin{figure}
-        \centering
-        \includegraphics[width=\textwidth]{Grafik/sorter1}
-    \end{figure}
+\begin{frame}[fragile]{Sorting Of Results}{Check Recipe For Keyword}
+\begin{lstlisting}
+if (searchKeywords != null)
+{
+    if (searchKeywords.Any(s => recipe.Title.ToLower().Contains(s.ToLower())))
+    {
+        searchResult.keyWordMatch++;
+    }
+}
+foreach (Result res in ri)
+{
+    searchResult.addIngredient(res.ingredient);
+\end{lstlisting}
 \end{frame}
-\begin{frame}{Sorting of results}
-    \begin{figure}
-        \centering
-        \includegraphics[width=\textwidth]{Grafik/sorter2}
-    \end{figure}
+
+\begin{frame}[fragile]{Sorting Of Results}{Check inventory}
+\begin{lstlisting}
+if (inventoryList.Where(il => il.IngredientID == res.ingredient.ID).Count() != 0)
+{
+    if (inventoryList.Where(il => il.IngredientID == res.ingredient.ID).First().Quantity >= res.quantity)
+    {
+        searchResult.fullMatch++;
+    }
+    else
+    {
+        searchResult.partialMatch += inventoryList.Where(il => il.IngredientID == res.ingredient.ID).First().Quantity / res.quantity;
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Sorting Of Results}{Check Ingredient For Keyword}
+\begin{lstlisting}
+if (searchKeywords != null)
+{
+    if (searchKeywords.Any(s => res.ingredient.Name.ToLower().Contains(s.ToLower())))
+    {
+        searchResult.keyWordMatch++;
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Sorting Of Results}{Check Ingredient In Last Meals}
+\begin{lstlisting}
+if (ingredientsFromLastMeals.Where(iflm => iflm.ingredientID == res.ingredient.ID).Count() != 0)
+{
+    searchResult.prevIngredients += ingredientsFromLastMeals.Where(iflm => iflm.ingredientID == res.ingredient.ID).Single().ingredientCount;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Sorting Of Results}{Check Ingredient On Graylist}
+\begin{lstlisting}
+if (grayList.Where(gl => res.ingredient.ID == gl.ingredient.ID).Count() != 0)
+{
+    searchResult.setRating = grayList.Where(gl => res.ingredient.ID == gl.ingredient.ID).SingleOrDefault().rating;
+}
+else
+{
+    searchResult.setRating = 50;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Sorting Of Results}{Ordering And Returning Results}
+\begin{lstlisting}
+    result.Add(searchResult);
+}
+
+return new ObservableCollection<SearchResults>(result.OrderByDescending(res => res.percentageFullMatch).ThenByDescending(res => res.percentagePartialMatch).ThenByDescending(res => res.getRating).ThenByDescending(res => res.prevIngredients).ThenByDescending(res => res.recipe.Title));
+\end{lstlisting}
 \end{frame}
 
 
