@@ -3,7 +3,7 @@
 \subsection{Sorting}
 \begin{frame}{Sorting}
     \begin{columns}
-    \column{0.7\textwidth}
+    \column{0.6\textwidth}
         \begin{itemize}
             \item percentageFullMatch = Percentage Full Match
             \item percentagePartialMatch = Percentage Partial Match
@@ -11,7 +11,7 @@
             \item prevIngredients = Previous Ingredients
             \item recipe.Title = Recipe Title
         \end{itemize}
-    \column{0.3\textwidth}
+    \column{0.4\textwidth}
         \begin{figure}
             \centering
             \includegraphics[width=\textwidth]{graphics/recipe-search-item}
@@ -41,13 +41,15 @@
 \subsection{Sorting Of Results}
 \begin{frame}[fragile]{Sorting Of Results}{Initialize result}
 \begin{lstlisting}
-ObservableCollection<SearchResults> result = new ObservableCollection<SearchResults>();
-
-foreach (IGrouping<int, Result> ri in userInput)
+public ObservableCollection<SearchResults> addValuesToSearch(IQueryable<IGrouping<int, Result>> userInput, List<string> searchKeywords = null)
 {
-    Recipe recipe = ri.FirstOrDefault().recipe;
+    ObservableCollection<SearchResults> result = new ObservableCollection<SearchResults>();
 
-    SearchResults searchResult = new SearchResults(recipe);
+    foreach (IGrouping<int, Result> ri in userInput)
+    {
+        Recipe recipe = ri.FirstOrDefault().recipe;
+
+        SearchResults searchResult = new SearchResults(recipe);
 \end{lstlisting}
 \end{frame}
 
