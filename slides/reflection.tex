@@ -1,22 +1,73 @@
 \section{Reflection}
 
 \begin{frame}{Reflection}{Errors and Missing features}%+fault kode
-	Name
+	Error: removePassedMeals 
 	\begin{itemize}
 		\item Intention
 			\begin{itemize}
-			\item a
+			\item Remove ingredients from meals cooked
 			\end{itemize}
 		\item Error
 			\begin{itemize}
-			\item b
+			\item Incorrect amount of ingredients are removed
 			\end{itemize}
 		\item Consequence
 			\begin{itemize}
-			\item c
+			\item The inventory does not represent the reality
 			\end{itemize}
 	\end{itemize}
+	
+		Error: addValuesToSearch
+		\begin{itemize}
+			\item Intention
+				\begin{itemize}
+				\item Get relevant recipes
+				\end{itemize}
+			\item Error
+				\begin{itemize}
+				\item Comparisons between inventory and needed ingredients can be wrong 
+				\end{itemize}
+			\item Consequence
+				\begin{itemize}
+				\item Wrong presentation of recipes
+				\end{itemize}
+		\end{itemize}
 \end{frame}
+
+\begin{frame}{Reflection}{Errors and Missing features}%+fault kode
+	Error: settingsViewModel
+	\begin{itemize}
+		\item Intention
+			\begin{itemize}
+			\item The user can rate an ingredient
+			\end{itemize}
+		\item Error
+			\begin{itemize}
+			\item The in program names does not match
+			\end{itemize}
+		\item Consequence
+			\begin{itemize}
+			\item Incorrect representation of digits and the rating is not saved
+			\end{itemize}
+	\end{itemize}
+	
+		Missing feature: showMeals
+		\begin{itemize}
+			\item Intention
+				\begin{itemize}
+				\item Show the users meal plan for a given week
+				\end{itemize}
+			\item Functionality to change
+				\begin{itemize}
+				\item All meals on the database is shown, should only show logged in users meals
+				\end{itemize}
+			\item Benefit
+				\begin{itemize}
+				\item The user only sees relevant meal objects on their meal plan
+				\end{itemize}
+		\end{itemize}
+\end{frame} %Anders over and out
+
 
 \begin{frame}{Reflection}{Optimization}
 	Minimize communication between server and client
