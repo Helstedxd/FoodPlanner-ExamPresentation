@@ -1,4 +1,4 @@
-\section{Quality Assurance}
+\subsection{Quality Assurance}
 
 \begin{frame}[fragile] {Quality Assurance} {Fulfilling the semester description}
 	\begin{itemize}
@@ -75,19 +75,19 @@ public void PurchaseDate_AutoSetConstructor_SetToNow() {
 public void AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
   //arrange
   Ingredient expectedNewIngredient = new Ingredient();
-  InventoryIngredient InventoryIngredient = new InventoryIngredient(expectedNewIngredient, 1);
+  InventoryIngredient inventoryIngredient = new InventoryIngredient (expectedNewIngredient, 1);
   InventoryViewModel inventoryViewModel = new InventoryViewModel();
   bool ingredientAdded;
   
   //act
-  {\color {red} inventoryViewModel.AddIngredientToInventory(expectedNewIngredient, 1);}
+  inventoryViewModel.AddIngredientToInventory(expectedNewIngredient, 1);
   
-  if (FoodPlanner.App.CurrentUser.InventoryIngredients.Contains(inventoryIngredient)) {
+  if (FoodPlanner.App.CurrentUser.InventoryIngredients.Contains(InventoryIngredient)) {
     ingredientAdded = true;
-  } else  {
-    ingredientAdded = false;
-  }
-  
+    } else {
+      ingredientAdded
+    }
+    
   //assert
   Assert.IsTrue(ingredientAdded);
 }
