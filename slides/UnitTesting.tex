@@ -98,12 +98,73 @@ AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
 
 \begin{frame} {Unit Testing} {Dependency injection}
 
-Dependency issue \newline
+Current dependency (tight coupling) \newline
 
 \includegraphics[width = \textwidth] {graphics/currentDependency.png}
+%første pil uses og sidste fetches data from db
+\end{frame}
+
+\begin{frame} {Unit Testing} {Dependency injection}
+\includegraphics[width = \textwidth]{graphics/dependencyInjectionBasic.png}
+\end{frame}
+
+
+\begin{frame} [fragile] {Unit Testing} {Dependency injection}
+
+\begin{lstlisting}
+public interface IUserInventory {
+  public void FecthUserInventory();
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+public class UserInventory : IUserInventory {
+  public void FetchUserInventory() {
+    //Go to db and fetch the user's inventory
+  }
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+public class InventoryViewModel {
+  private IUserInventory _userInventory;
+  
+  public InventoryViewModel(IUserInventory userInventory) {
+    this._userInventory = userInventory;
+  }
+  
+  public void Start() {
+    this._userInventory.FetchUserInventory();
+    //User inventory fetched and ready for use
+  }
+\end{lstlisting}
+
+\begin{lstlisting}
+InventoryViewModel inventoryViewModel = new InventoryViewModel(new UserInventory();
+
+inventoryViewModel.Start();
+\end{lstlisting}
 
 \end{frame}
 
 \begin{frame} {Unit Testing} {Dependency injection}
+
+\begin{itemize}
+	\item issues
+		\begin{itemize}
+			\item it is hard coded
+			\item instantiating is custom
+		\end{itemize}
+\end{itemize}
+
+\begin{itemize}
+	\item Using Locators
+		\begin{itemize}
+			\item map of dependencies
+			\item logic to create the dependencies
+		\end{itemize}
+	\item New class(); -> Locater -> return class
+	\item Using dependency frameworks e.g. Ninject 
+\end{itemize}
 
 \end{frame}
