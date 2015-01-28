@@ -2,21 +2,17 @@
 
 \subsection{Sorting}
 \begin{frame}{Sorting}
-    \begin{columns}
-    \column{0.6\textwidth}
-        \begin{itemize}
-            \item percentageFullMatch = Percentage Full Match
-            \item percentagePartialMatch = Percentage Partial Match
-            \item getRating = Rating
-            \item prevIngredients = Previous Ingredients
-            \item recipe.Title = Recipe Title
-        \end{itemize}
-    \column{0.4\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=\textwidth]{graphics/recipe-search-item}
-        \end{figure}
-    \end{columns}
+    \begin{itemize}
+        \item percentageFullMatch = Percentage Full Match
+        \item percentagePartialMatch = Percentage Partial Match
+        \item getRating = Rating
+        \item prevIngredients = Previous Ingredients
+        \item recipe.Title = Recipe Title
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth]{graphics/recipe-search-item}
+    \end{figure}
 
 \end{frame}
 
@@ -123,7 +119,12 @@ else
     result.Add(searchResult);
 }
 
-return new ObservableCollection<SearchResults>(result.OrderByDescending(res => res.percentageFullMatch).ThenByDescending(res => res.percentagePartialMatch).ThenByDescending(res => res.getRating).ThenByDescending(res => res.prevIngredients).ThenByDescending(res => res.recipe.Title));
+return new ObservableCollection<SearchResults>(result.
+    OrderByDescending(res => res.percentageFullMatch).
+    ThenByDescending(res => res.percentagePartialMatch).
+    ThenByDescending(res => res.getRating).
+    ThenByDescending(res => res.prevIngredients).
+    ThenByDescending(res => res.recipe.Title));
 \end{lstlisting}
 \end{frame}
 
