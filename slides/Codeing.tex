@@ -34,8 +34,8 @@
     %\end{figure}
 %\end{frame}
 
-\subsection{Sorting Of Results}
-\begin{frame}[fragile]{Sorting Of Results}{Initialize result}
+\subsection{Sorting of Results}
+\begin{frame}[fragile]{Sorting of Results}{Initialize Result}
 \begin{lstlisting}
 public ObservableCollection<SearchResults> addValuesToSearch(IQueryable<IGrouping<int, Result>> userInput, List<string> searchKeywords = null)
 {
@@ -49,7 +49,7 @@ public ObservableCollection<SearchResults> addValuesToSearch(IQueryable<IGroupin
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Sorting Of Results}{Check Recipe For Keyword}
+\begin{frame}[fragile]{Sorting of Results}{Check Recipe for Keyword}
 \begin{lstlisting}
 if (searchKeywords != null)
 {
@@ -64,7 +64,7 @@ foreach (Result res in ri)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Sorting Of Results}{Check inventory}
+\begin{frame}[fragile]{Sorting of Results}{Check Inventory}
 \begin{lstlisting}
 if (inventoryList.Where(il => il.IngredientID == res.ingredient.ID).Count() != 0)
 {
@@ -80,7 +80,7 @@ if (inventoryList.Where(il => il.IngredientID == res.ingredient.ID).Count() != 0
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Sorting Of Results}{Check Ingredient For Keyword}
+\begin{frame}[fragile]{Sorting of Results}{Check Ingredient for Keyword}
 \begin{lstlisting}
 if (searchKeywords != null)
 {
@@ -92,7 +92,7 @@ if (searchKeywords != null)
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Sorting Of Results}{Check Ingredient In Last Meals}
+\begin{frame}[fragile]{Sorting of Results}{Check Ingredient in Last Meals}
 \begin{lstlisting}
 if (ingredientsFromLastMeals.Where(iflm => iflm.ingredientID == res.ingredient.ID).Count() != 0)
 {
@@ -101,7 +101,7 @@ if (ingredientsFromLastMeals.Where(iflm => iflm.ingredientID == res.ingredient.I
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Sorting Of Results}{Check Ingredient On Graylist}
+\begin{frame}[fragile]{Sorting of Results}{Check Ingredient on Graylist}
 \begin{lstlisting}
 if (grayList.Where(gl => res.ingredient.ID == gl.ingredient.ID).Count() != 0)
 {
@@ -114,7 +114,7 @@ else
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Sorting Of Results}{Ordering And Returning Results}
+\begin{frame}[fragile]{Sorting of Results}{Ordering and Returning Results}
 \begin{lstlisting}
     result.Add(searchResult);
 }

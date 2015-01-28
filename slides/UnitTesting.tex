@@ -1,8 +1,8 @@
 \section{Quality Assurance}
 
-\begin{frame}[fragile] {Quality Assurance} {Fulfilling the semester description}
+\begin{frame}[fragile] {Quality Assurance} {Fulfilling the Semester Description}
 	\begin{itemize}
-		\item Quality assurance (in terms of program testing and results and usability evaluation and results), including arguments for coverage and validity {\footnotesize (Semester description)}
+		\item Quality assurance (in terms of program testing, results, usability evaluation and results), including arguments for coverage and validity {\footnotesize (Semester description)}
 		\begin{itemize}
 			\item Program testing = Unit testing
 			\item Usability evaluation = Instant Data Analysis (report chapter 11)
@@ -13,7 +13,7 @@
 
 \subsection{Unit Testing}
 
-\begin{frame}[fragile] {Unit Testing} {What is unit testing?}
+\begin{frame}[fragile] {Unit Testing} {What is Unit Testing?}
 	\begin{itemize}
 		\item Initial stage of program testing
 		\item Isolate smallest testable code
@@ -21,7 +21,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile] {Unit Testing} {Possible candidates for unit testing}
+\begin{frame}[fragile] {Unit Testing} {Possible Candidates for Unit Testing}
 
 	\begin{itemize}
 		\item Classes e.g. User, Ingredient or Recipe
@@ -96,7 +96,7 @@ AddInventoryIngredient_CorrectIngrAdded_InventoryUpdated() {
 
 \end{frame}
 
-\begin{frame} {Unit Testing} {Dependency injection}
+\begin{frame} {Unit Testing} {Dependency Injection}
 
 Current dependency (tight coupling) \newline
 
@@ -109,7 +109,7 @@ Current dependency (tight coupling) \newline
 \end{frame}
 
 
-\begin{frame} [fragile] {Unit Testing} {Dependency injection}
+\begin{frame} [fragile] {Unit Testing} {Dependency Injection}
 
 \begin{lstlisting}
 public interface IUserInventory {
@@ -147,27 +147,27 @@ inventoryViewModel.Start();
 
 \end{frame}
 
-\begin{frame} {Unit Testing} {Dependency injection}
+\begin{frame} {Unit Testing} {Dependency Injection}
 
 \begin{itemize}
-	\item issues
+	\item Issues
 		\begin{itemize}
-			\item it is hard coded
-			\item instantiating is custom
+			\item It is hard coded
+			\item Instantiating is custom
 		\end{itemize}
 \end{itemize}
 
 \begin{itemize}
 	\item Using Locators
 		\begin{itemize}
-			\item map of dependencies
-			\item logic to create the dependencies
+			\item Map of dependencies
+			\item Logic to create the dependencies
 		\end{itemize}
 	\item New class(); -> Locater -> return class
 	\item Using dependency injection containers (IOC)
 		\begin{itemize}
-			\item creating and coupling of objects
-			\item use a configurable framework e.g. Ninject
+			\item Creating and coupling of objects
+			\item Use a configurable framework e.g. Ninject
 		\end{itemize}		 
 \end{itemize}
 
