@@ -119,12 +119,12 @@ else
     result.Add(searchResult);
 }
 
-return new ObservableCollection<SearchResults>(result.
-    OrderByDescending(res => res.percentageFullMatch).
-    ThenByDescending(res => res.percentagePartialMatch).
-    ThenByDescending(res => res.getRating).
-    ThenByDescending(res => res.prevIngredients).
-    ThenByDescending(res => res.recipe.Title));
+return new ObservableCollection<SearchResults>(result
+    .OrderByDescending(res => res.percentageFullMatch)
+    .ThenByDescending(res => res.percentagePartialMatch)
+    .ThenByDescending(res => res.getRating)
+    .ThenByDescending(res => res.prevIngredients)
+    .ThenByDescending(res => res.recipe.Title));
 \end{lstlisting}
 \end{frame}
 
